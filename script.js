@@ -8,12 +8,27 @@ personalMovieDB = {
     privat: false
 };
 
-const a = prompt('Один из последних просмотренных фильмов?', ''), // Создали переменные с вопросами, которые передадутся как ключ = значение в объект 'movies'
-      b = prompt('На сколько оцените его?', ''),
-      c = prompt('Один из последних просмотренных фильмов?', ''),
-      d = prompt('На сколько оцените его?', '');
+for(let i = 0; i < 2; i++) {
+    const a = prompt('Один из последних просмотренных фильмов?', ''), // Создали переменные с вопросами, которые передадутся как ключ = значение в объект 'movies'
+          b = prompt('На сколько оцените его?', '');
 
-personalMovieDB.movies[a] = b; // Указываем путь к переменным, чтобы получить результат вопроса и ответа пользователя. 
-personalMovieDB.movies[c] = d; // В этом примере 'c' будет вопросом. 'a' будет ответом.
+    if(a != null && b != null && a != '' && b != '' && a.length < 50) {
+        personalMovieDB.movies[a] = b; // Указываем путь к переменным, чтобы получить результат вопроса и ответа пользователя. 
+        console.log('done');
+    } else {
+        console.log('error');
+        i--
+    }   
+}
+
+if (personalMovieDB.count < 10) {
+    console.log('Просмотрено довольно мало фильмов');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+    console.log('Вы классический зритель');
+} else if (personalMovieDB.count >= 30) {
+    console.log('Вы киноман');
+} else {
+    console.log('Произошла ошибка');
+}
 
 console.log(personalMovieDB); // выводим результат в консоль, чтобы видеть результат задачи и ответов пользователя.
